@@ -8,4 +8,4 @@ youtube-dl==2021.6.6
 opencv-python==4.1.2.30
 lightgbm==2.2.3
 librosa==0.8.1
-libglib2.0-0
+libglib2.0-0==2.70.0
