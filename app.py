@@ -76,8 +76,9 @@ df = df.astype(str)
 
 def capture_frames_url(url):
     reg = "^((?:https?:\/\/))?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(watch\?(.*&)?v=\/?))([^\?\&\"\'>]+)$"
+    global stop
     if url!='':
-        if True:
+        if not stop:
             url = str(url)
             vAR_st.write(url)
             if re.match(reg, url):
@@ -97,6 +98,8 @@ def capture_frames_url(url):
                 im_bytes = buffer.tobytes()
                 encodedJPG = base64.b64encode(im_bytes)
                 insertFrame(encodedJPG)
+                if stop:
+                    break
             cap.release()
             cv2.destroyAllWindows()
 
@@ -308,8 +311,7 @@ vAR_data_pipeline=vAR_st.button("Initailize data pipeline and model pipeline")
 
 url = vAR_st.text_input('Enter the URL',key = 2)
 if url!='':
-    href = f'<a style="color:black;" href="https://share.streamlit.io/darshan-16/face_recognition/main/app.py/" class="button">Stop</a>'
-    vAR_st.markdown(href, unsafe_allow_html=True)
+    stop = vAR_st.button("Stop")
     capture_frames_url(url)
 
 vAR_process=vAR_st.button("Run Model")
