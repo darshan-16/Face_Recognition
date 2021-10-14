@@ -308,7 +308,7 @@ vAR_data_pipeline=vAR_st.button("Initailize data pipeline and model pipeline")
 
 url = vAR_st.text_input('Enter the URL',key = 2)
 if url!='':
-    href = f'<a style="color:black;" href="https://share.streamlit.io/darshan-16/Face_Recognition/app.py/" class="button">Stop</a>'
+    href = f'<a style="color:black;" href="https://share.streamlit.io/darshan-16/face_recognition/main/app.py" class="button">Stop</a>'
     vAR_st.markdown(href, unsafe_allow_html=True)
     capture_frames_url(url)
 
