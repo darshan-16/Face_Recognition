@@ -69,7 +69,7 @@ vAR_st.markdown("""
 
 mod = VGGFace.loadModel()
 
-customers_csv_path = Path('sample_customers.csv').parent[1]/'Customers/sample_customers.csv'
+customers_csv_path = Path('sample_customers.csv').parents[1]/'Customers/sample_customers.csv'
 df = pd.read_csv(customers_csv_path, names=['cid', 'name', 'city', 'phone'])
 df = df.astype(str)
 
