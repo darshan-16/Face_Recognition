@@ -69,6 +69,7 @@ vAR_st.markdown("""
 
 mod = VGGFace.loadModel()
 
+vAR_st.write(Path('sample_customers.csv').resolve())
 customers_csv_path = Path('sample_customers.csv').resolve().parents[1]/'Customers/sample_customers.csv'
 df = pd.read_csv(customers_csv_path, names=['cid', 'name', 'city', 'phone'])
 df = df.astype(str)
