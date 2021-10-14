@@ -11,6 +11,7 @@ import pandas as pd
 import mysql.connector
 from mtcnn import MTCNN
 from deepface import DeepFace
+from pathlib import Path
 from base64 import b64decode, b64encode
 from deepface.basemodels import VGGFace
 import streamlit as vAR_st
@@ -68,7 +69,8 @@ vAR_st.markdown("""
 
 mod = VGGFace.loadModel()
 
-df = pd.read_csv("/Customers/sample_customers.csv", names=['cid', 'name', 'city', 'phone'])
+customers_csv_path = Path('sample_customers.csv').parent[1]/'Customers/sample_customers.csv'
+df = pd.read_csv(customers_csv_path, names=['cid', 'name', 'city', 'phone'])
 df = df.astype(str)
 
 
