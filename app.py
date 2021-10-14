@@ -78,6 +78,10 @@ def capture_frames_url(url):
     reg = "^((?:https?:\/\/))?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(watch\?(.*&)?v=\/?))([^\?\&\"\'>]+)$"
     if url!='':
         global stop
+        if stop:
+            t = vAR_st.empty()
+            t.text_input('Enter the URL', '')
+            return
         if not stop:
             url = str(url)
             vAR_st.write(url)
@@ -98,15 +102,8 @@ def capture_frames_url(url):
                 im_bytes = buffer.tobytes()
                 encodedJPG = base64.b64encode(im_bytes)
                 insertFrame(encodedJPG)
-                if stop:
-                    break
             cap.release()
             cv2.destroyAllWindows()
-        
-
-def capture_frames_camera():
-    if vAR_start:
-        capture_frames_cam()
 
 def process_frames():
     if vAR_process:
