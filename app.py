@@ -77,11 +77,7 @@ df = df.astype(str)
 def capture_frames_url(url):
     reg = "^((?:https?:\/\/))?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(watch\?(.*&)?v=\/?))([^\?\&\"\'>]+)$"
     if url!='':
-        global stop
-        if stop:
-            url = ''
-            return
-        if not stop:
+        if True:
             url = str(url)
             vAR_st.write(url)
             if re.match(reg, url):
@@ -312,7 +308,8 @@ vAR_data_pipeline=vAR_st.button("Initailize data pipeline and model pipeline")
 
 url = vAR_st.text_input('Enter the URL',key = 2)
 if url!='':
-    stop = vAR_st.button("Stop")
+    href = f'<a style="color:black;" href="https://share.streamlit.io/tarun243/streamlit-commontoallindustry/Web_app/app.py/" class="button">Stop</a>'
+    vAR_st.markdown(href, unsafe_allow_html=True)
     capture_frames_url(url)
 
 vAR_process=vAR_st.button("Run Model")
