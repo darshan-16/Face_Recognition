@@ -316,9 +316,8 @@ vAR_data_pipeline=vAR_st.button("Initailize data pipeline and model pipeline")
 
 url = vAR_st.text_input('Enter the URL',key = 2)
 if url!='':
+    stop = vAR_st.button("Stop")
     capture_frames_url(url)
-
-stop = vAR_st.button("Stop")
 
 vAR_process=vAR_st.button("Run Model")
 if vAR_process:
