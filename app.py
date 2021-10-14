@@ -69,7 +69,6 @@ vAR_st.markdown("""
 
 mod = VGGFace.loadModel()
 
-vAR_st.write(Path('sample_customers.csv').resolve().parents[1]/'face_recognition/Customers/sample_customers.csv')
 customers_csv_path = Path('sample_customers.csv').resolve().parents[1]/'face_recognition/Customers/sample_customers.csv'
 df = pd.read_csv(customers_csv_path, names=['cid', 'name', 'city', 'phone'])
 df = df.astype(str)
@@ -142,7 +141,7 @@ def frame_process(frame):
         obj = DeepFace.analyze(np.array(face_crop,dtype=np.uint8), actions = ['gender', 'race'] ,enforce_detection=False)
         gender.append(obj['gender'])
         race.append(obj['dominant_race'])
-        df1 = DeepFace.find(np.array(face_crop,dtype=np.uint8), db_path='/Customers', 
+        df1 = DeepFace.find(np.array(face_crop,dtype=np.uint8), db_path=Path('sample_customers.csv').resolve().parents[1]/'face_recognition/Customers', 
                              model_name='VGG-Face', model=mod, enforce_detection=False)
         if(df1.shape[0]>0):
             name = str(df1.iloc[0].identity)
