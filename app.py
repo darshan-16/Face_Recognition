@@ -79,8 +79,7 @@ def capture_frames_url(url):
     if url!='':
         global stop
         if stop:
-            t = vAR_st.empty()
-            t.text_input('Enter the URL', '')
+            url = ''
             return
         if not stop:
             url = str(url)
